@@ -29,6 +29,7 @@
             border: 3px solid #000;
             border-radius: 5px;
             position: relative;
+            margin-bottom: 20px; /* Adicionado para espaço entre o envelope e o cartão */
         }
 
         .envelope::before {
@@ -60,10 +61,10 @@
         .flower {
             width: 100px;
             position: absolute;
-            top: 150px;
+            top: 150px; /* A posição inicial da flor é abaixo do envelope */
             left: 50%;
             transform: translateX(-50%);
-            animation: riseUp 3s forwards;
+            animation: riseUp 3s forwards; /* Animação para a flor subir */
         }
 
         .card {
@@ -73,14 +74,10 @@
             border: 2px solid #ffc107;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-            margin-top: 20px;
             opacity: 0;
-            animation: showCard 3s forwards 2s;
-            position: absolute;
-            top: 220px; /* Ajuste a posição vertical do cartão */
-            left: 50%;
-            transform: translateX(-50%);
+            animation: showCard 3s forwards 2s; /* Animação para o cartão aparecer */
             max-width: 400px;
+            margin: 0 auto; /* Centraliza o cartão */
         }
 
         @keyframes riseUp {
