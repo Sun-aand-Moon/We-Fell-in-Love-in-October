@@ -14,34 +14,29 @@
             height: 100vh;
             background-color: #f0f0f0;
             overflow: hidden;
-            flex-direction: column; /* Organiza o conteúdo em coluna para telas menores */
+            flex-direction: column;
         }
 
         .container {
             display: flex;
-            align-items: flex-start; /* Alinha o envelope e o cartão na parte superior */
+            align-items: flex-start;
             position: relative;
             text-align: center;
             z-index: 1;
-            flex-direction: row; /* Mantém o layout em linha */
-            width: 90%; /* Largura da container para que se adapte ao telefone */
-            max-width: 600px; /* Limita a largura máxima para telas maiores */
+            flex-direction: row;
+            width: 90%;
+            max-width: 600px;
         }
 
         .envelope {
-            width: 150px; /* Ajusta a largura do envelope */
-            height: 100px; /* Ajusta a altura do envelope */
+            width: 150px;
+            height: 100px;
             background-color: #fff;
             border: 3px solid #000;
             border-radius: 5px;
             position: relative;
-            margin-right: 20px; /* Espaço entre o envelope e o cartão */
+            margin-right: 20px;
             overflow: hidden;
-            transition: transform 0.5s; /* Transição para a animação de abrir */
-        }
-
-        .envelope.open {
-            transform: translateY(-10px) rotateX(20deg); /* Animação de abrir */
         }
 
         .envelope::before {
@@ -56,7 +51,6 @@
             border-left: 75px solid transparent;
             border-right: 75px solid transparent;
             border-bottom: 30px solid #fff;
-            transition: transform 0.5s; /* Transição para a animação de abrir */
         }
 
         .envelope::after {
@@ -67,47 +61,37 @@
             text-align: center;
             font-family: 'Arial', sans-serif;
             font-weight: bold;
-            font-size: 16px; /* Ajusta o tamanho da fonte */
+            font-size: 16px;
             color: #000;
         }
 
         .flower {
-            width: 80px; /* Ajusta o tamanho da flor */
             position: absolute;
-            top: 40px; /* Posição inicial da flor acima do envelope */
+            top: 50%;
             left: 50%;
-            transform: translateX(-50%);
-            opacity: 0; /* Inicialmente invisível */
-            animation: riseUp 3s forwards; /* Animação para a flor subir */
-            transition: opacity 0.5s ease-in; /* Transição para a flor aparecer */
-            z-index: 2; /* Garante que a flor fique na frente */
+            transform: translate(-50%, -50%);
+            width: 200px;
+            opacity: 1;
+            transition: opacity 0.5s ease, width 0.5s ease, top 0.5s ease, left 0.5s ease;
+        }
+
+        .flower.small {
+            width: 50px;
+            top: 70%;
+            left: 30%;
+            opacity: 1;
         }
 
         .card {
-            font-size: 1rem; /* Ajusta o tamanho da fonte do cartão */
+            font-size: 1rem;
             background-color: #fff;
-            padding: 15px; /* Ajusta o padding do cartão */
+            padding: 15px;
             border: 2px solid #ffc107;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             opacity: 0;
-            animation: showCard 3s forwards 2s; /* Animação para o cartão aparecer */
-            max-width: 250px; /* Ajusta a largura máxima do cartão */
-            margin: 0; /* Remove a margem do cartão */
-        }
-
-        @keyframes riseUp {
-            0% {
-                top: 40px;
-                opacity: 0;
-            }
-            50% {
-                top: 0px;
-                opacity: 1; /* A flor se torna visível */
-            }
-            100% {
-                top: -30px;
-            }
+            animation: showCard 3s forwards 2s;
+            max-width: 250px;
         }
 
         @keyframes showCard {
@@ -156,45 +140,19 @@
     </div>
 
     <script>
-        // Animação para abrir o envelope e mostrar a flor
         window.onload = function() {
-            const envelope = document.querySelector('.envelope');
             const flower = document.querySelector('.flower');
 
-            envelope.classList.add('open'); // Adiciona classe para abrir o envelope
+            // Após 5 segundos, a flor desaparece e depois reaparece pequena ao lado do envelope
             setTimeout(() => {
-                flower.style.opacity = 1; // Faz a flor aparecer
-            }, 500); // Delay para a flor aparecer após o envelope abrir
+                flower.style.opacity = '0'; // Desaparece
+            }, 5000);
 
-            // Função para gerar fogos de artifício
-            function createFirework(x, y) {
-                const firework = document.createElement('div');
-                firework.classList.add('firework');
-                firework.style.left = `${x}px`;
-                firework.style.top = `${y}px`;
-                firework.style.backgroundColor = `hsl(${Math.random() * 360}, 100%, 50%)`;
-                document.body.appendChild(firework);
-
-                setTimeout(() => {
-                    firework.remove();
-                }, 1500);
-            }
-
-            // Lógica para estourar os fogos após a animação
+            // Reaparece pequena após desaparecer
             setTimeout(() => {
-                for (let i = 0; i < 20; i++) {
-                    const x = Math.random() * window.innerWidth;
-                    const y = Math.random() * window.innerHeight;
-                    createFirework(x, y);
-                }
-
-                // Continuar estourando fogos de forma aleatória
-                setInterval(() => {
-                    const x = Math.random() * window.innerWidth;
-                    const y = Math.random() * window.innerHeight;
-                    createFirework(x, y);
-                }, 500);
-            }, 4000); // Inicia os fogos 4 segundos após o envelope abrir
+                flower.classList.add('small'); // Adiciona a classe que reposiciona e diminui a flor
+                flower.style.opacity = '1';   // Faz a flor reaparecer
+            }, 6000); // Reaparece 1 segundo depois de sumir
         };
     </script>
 
