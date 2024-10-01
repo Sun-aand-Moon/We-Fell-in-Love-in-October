@@ -74,13 +74,13 @@
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             margin-top: 20px;
-            max-width: 400px;
             opacity: 0;
             animation: showCard 3s forwards 2s;
             position: absolute;
-            top: 50%;
+            top: 70%; /* Mudei essa linha */
             left: 50%;
             transform: translate(-50%, -50%);
+            max-width: 400px;
         }
 
         @keyframes riseUp {
@@ -124,18 +124,6 @@
             100% {
                 opacity: 0;
                 transform: scale(3);
-            }
-        }
-
-        /* Cores variadas dos fogos de artifício */
-        @keyframes fireworks {
-            0% {
-                transform: scale(0);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(3);
-                opacity: 0;
             }
         }
     </style>
