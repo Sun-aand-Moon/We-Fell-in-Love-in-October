@@ -14,11 +14,12 @@
             height: 100vh;
             background-color: #f0f0f0;
             overflow: hidden;
+            position: relative; /* Para posicionar os elementos filhos */
         }
 
         .container {
             display: flex;
-            align-items: flex-start; /* Alinha o envelope e o cartão na parte superior */
+            align-items: flex-start;
             position: relative;
             text-align: center;
             z-index: 1;
@@ -134,6 +135,27 @@
                 transform: scale(3);
             }
         }
+
+        /* Corações caindo */
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: red;
+            clip-path: polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%);
+            animation: fall 2s forwards;
+        }
+
+        @keyframes fall {
+            0% {
+                transform: translateY(0);
+                opacity: 1;
+            }
+            100% {
+                transform: translateY(300px);
+                opacity: 0;
+            }
+        }
     </style>
 </head>
 <body>
@@ -147,7 +169,7 @@
             Não posso te dar flores reais agora, então criei este site para te presentear com flores virtuais. ILY<br><br>
             P.S.: Ainda irei te dar flores todos os dias.
         </div>
-        <img src="https://raw.githubusercontent.com/Sun-aand-Moon/We-Fell-in-Love-in-October/refs/heads/main/181844e7dfdb4f8ed6d78133cf2c3be8.jpg" alt="Flor" class="flower">
+        <img src="https://github.com/Sun-aand-Moon/We-Fell-in-Love-in-October/blob/main/181844e7dfdb4f8ed6d78133cf2c3be8.jpg?raw=true" alt="Flor" class="flower">
     </div>
 
     <script>
@@ -175,7 +197,20 @@
                 }, 1500);
             }
 
-            // Lógica para estourar os fogos após a animação
+            // Função para gerar corações
+            function createHeart() {
+                const heart = document.createElement('div');
+                heart.classList.add('heart');
+                heart.style.left = `${Math.random() * window.innerWidth}px`;
+                heart.style.top = '0'; // Começa no topo da tela
+                document.body.appendChild(heart);
+
+                setTimeout(() => {
+                    heart.remove();
+                }, 2000); // Remove o coração após 2 segundos
+            }
+
+            // Lógica para estourar os fogos e criar corações
             setTimeout(() => {
                 for (let i = 0; i < 20; i++) {
                     const x = Math.random() * window.innerWidth;
@@ -189,6 +224,9 @@
                     const y = Math.random() * window.innerHeight;
                     createFirework(x, y);
                 }, 500);
+
+                // Gerar corações a cada 300ms
+                setInterval(createHeart, 300);
             }, 4000); // Inicia os fogos 4 segundos após o envelope abrir
         };
     </script>
