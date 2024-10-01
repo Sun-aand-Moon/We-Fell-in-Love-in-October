@@ -14,6 +14,7 @@
             height: 100vh;
             background-color: #f0f0f0;
             overflow: hidden;
+            flex-direction: column; /* Organiza o conteúdo em coluna para telas menores */
         }
 
         .container {
@@ -22,11 +23,14 @@
             position: relative;
             text-align: center;
             z-index: 1;
+            flex-direction: row; /* Mantém o layout em linha */
+            width: 90%; /* Largura da container para que se adapte ao telefone */
+            max-width: 600px; /* Limita a largura máxima para telas maiores */
         }
 
         .envelope {
-            width: 250px;
-            height: 150px;
+            width: 150px; /* Ajusta a largura do envelope */
+            height: 100px; /* Ajusta a altura do envelope */
             background-color: #fff;
             border: 3px solid #000;
             border-radius: 5px;
@@ -37,7 +41,7 @@
         }
 
         .envelope.open {
-            transform: translateY(-20px) rotateX(20deg); /* Animação de abrir */
+            transform: translateY(-10px) rotateX(20deg); /* Animação de abrir */
         }
 
         .envelope::before {
@@ -49,9 +53,9 @@
             width: 0;
             height: 0;
             margin: 0 auto;
-            border-left: 125px solid transparent;
-            border-right: 125px solid transparent;
-            border-bottom: 40px solid #fff;
+            border-left: 75px solid transparent;
+            border-right: 75px solid transparent;
+            border-bottom: 30px solid #fff;
             transition: transform 0.5s; /* Transição para a animação de abrir */
         }
 
@@ -63,36 +67,38 @@
             text-align: center;
             font-family: 'Arial', sans-serif;
             font-weight: bold;
-            font-size: 18px;
+            font-size: 16px; /* Ajusta o tamanho da fonte */
             color: #000;
         }
 
         .flower {
-            width: 100px;
+            width: 80px; /* Ajusta o tamanho da flor */
             position: absolute;
-            top: 40px; /* Posição da flor ao lado do envelope */
-            left: -80px; /* Coloca a flor à esquerda do envelope */
+            top: 40px; /* Posição inicial da flor acima do envelope */
+            left: 50%;
+            transform: translateX(-50%);
             opacity: 0; /* Inicialmente invisível */
             animation: riseUp 3s forwards; /* Animação para a flor subir */
             transition: opacity 0.5s ease-in; /* Transição para a flor aparecer */
+            z-index: 2; /* Garante que a flor fique na frente */
         }
 
         .card {
-            font-size: 1.2rem;
+            font-size: 1rem; /* Ajusta o tamanho da fonte do cartão */
             background-color: #fff;
-            padding: 20px;
+            padding: 15px; /* Ajusta o padding do cartão */
             border: 2px solid #ffc107;
             border-radius: 10px;
             box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
             opacity: 0;
             animation: showCard 3s forwards 2s; /* Animação para o cartão aparecer */
-            max-width: 400px;
+            max-width: 250px; /* Ajusta a largura máxima do cartão */
             margin: 0; /* Remove a margem do cartão */
         }
 
         @keyframes riseUp {
             0% {
-                top: 50px;
+                top: 40px;
                 opacity: 0;
             }
             50% {
@@ -100,7 +106,7 @@
                 opacity: 1; /* A flor se torna visível */
             }
             100% {
-                top: -40px;
+                top: -30px;
             }
         }
 
@@ -138,7 +144,6 @@
 <body>
 
     <div class="container">
-        <img src="https://github.com/Sun-aand-Moon/We-Fell-in-Love-in-October/blob/main/181844e7dfdb4f8ed6d78133cf2c3be8.jpg?raw=true" alt="Flor" class="flower">
         <div class="envelope"></div>
         <div class="card">
             Foi em outubro que os meus olhos finalmente encontraram os seus, e desde então, não consigo mais esquecê-los.
@@ -147,6 +152,7 @@
             Não posso te dar flores reais agora, então criei este site para te presentear com flores virtuais. ILY<br><br>
             P.S.: Ainda irei te dar flores todos os dias.
         </div>
+        <img src="https://github.com/Sun-aand-Moon/We-Fell-in-Love-in-October/blob/main/181844e7dfdb4f8ed6d78133cf2c3be8.jpg?raw=true" alt="Flor" class="flower">
     </div>
 
     <script>
