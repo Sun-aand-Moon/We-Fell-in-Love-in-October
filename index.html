@@ -5,6 +5,11 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Surpresa Especial</title>
     <style>
+        @font-face {
+            font-family: 'Journey Kidders';
+            src: url('caminho-da-fonte/JourneyKidders.ttf') format('truetype');
+        }
+
         body {
             margin: 0;
             padding: 0;
@@ -19,7 +24,7 @@
 
         .container {
             display: flex;
-            align-items: flex-start;
+            align-items: center;
             position: relative;
             text-align: center;
             z-index: 1;
@@ -53,16 +58,16 @@
             border-bottom: 30px solid #fff;
         }
 
-        .envelope::after {
-            content: "Para Sunshine";
+        /* Nome estilizado para ficar à esquerda do envelope */
+        .name {
+            font-family: 'Journey Kidders', cursive;
+            font-size: 24px;
             position: absolute;
-            bottom: 10px;
-            width: 100%;
-            text-align: center;
-            font-family: 'Arial', sans-serif;
-            font-weight: bold;
-            font-size: 16px;
+            left: -100px;
+            top: 40px;
+            transform: rotate(-10deg);
             color: #000;
+            white-space: nowrap;
         }
 
         .flower {
@@ -127,13 +132,22 @@
 </head>
 <body>
 
+    <!-- Adicionando o áudio com autoplay -->
+    <audio autoplay loop>
+        <source src="videoplayback.m4a" type="audio/mpeg">
+        Seu navegador não suporta o elemento de áudio.
+    </audio>
+
     <div class="container">
+        <!-- Texto ao lado esquerdo do envelope -->
+        <div class="name">Para Sunshine</div>
         <div class="envelope"></div>
         <div class="card">
-            Para os olhos castanhos que me hipnotizam.
-            Seu presente de Dia das Crianças adiantado.
+            Para você nunca se esquecer de mim, a cada semana te mando um buquê, mesmo que virtual. Afinal foi te encher de flor, minha flor! 
+            Que seu dia seja tão lindo quanto as pétalas das rosas vermelhas, e que cada uma delas traga um sorriso no seu rosto. 
+            Um maravilhoso dia para você, com todo o meu carinho. 💐
         </div>
-        <img src="https://github.com/Sun-aand-Moon/We-Fell-in-Love-in-October/blob/main/e4c1223830c4c87e45ac41d7f282652f.jpg?raw=true" alt="Flor" class="flower">
+        <img src="https://github.com/Sun-aand-Moon/We-Fell-in-Love-in-October/blob/main/164d0ba791e311f66e215bf7969df5b7.jpg?raw=true" alt="Flor" class="flower">
     </div>
 
     <script>
