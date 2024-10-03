@@ -42,6 +42,7 @@
             position: relative;
             margin-right: 20px;
             overflow: hidden;
+            z-index: 1; /* Mantém o envelope atrás do texto */
         }
 
         .envelope::before {
@@ -58,7 +59,7 @@
             border-bottom: 30px solid #fff;
         }
 
-        /* Nome estilizado para ficar à esquerda do envelope */
+        /* Nome estilizado para ficar à frente do envelope */
         .name {
             font-family: 'Journey Kidders', cursive;
             font-size: 24px;
@@ -68,6 +69,7 @@
             transform: rotate(-10deg);
             color: #000;
             white-space: nowrap;
+            z-index: 2; /* Garante que o texto fique à frente do envelope */
         }
 
         .flower {
@@ -135,12 +137,11 @@
     <!-- Adicionando o áudio com autoplay -->
     <audio autoplay loop>
         <source src="videoplayback.m4a" type="audio/mpeg">
-        Seu navegador não suporta o elemento de áudio.
-    </audio>
+        </audio>
 
     <div class="container">
         <!-- Texto ao lado esquerdo do envelope -->
-        <div class="name">Para Sunshine</div>
+        <div class="name">Para Sunshine:</div>
         <div class="envelope"></div>
         <div class="card">
             Para você nunca se esquecer de mim, a cada semana te mando um buquê, mesmo que virtual. Afinal foi te encher de flor, minha flor! 
